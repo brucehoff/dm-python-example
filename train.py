@@ -10,6 +10,7 @@ https://pyscience.wordpress.com/2014/09/08/dicom-in-python-importing-medical-ima
 import dicom
 import os
 import sys
+from gzip import GzipFile
 
 if __name__ == '__main__':
     #PathDicom = "/trainingData"
@@ -17,7 +18,12 @@ if __name__ == '__main__':
     for filename in os.listdir(PathDicom):
         if ".dcm" in filename.lower():
             sys.stdout.write("{}: ".format(filename))
-            RefDs = dicom.read_file(os.path.join(PathDicom,filename))
+            
+            if ".dcm.gz" in filename.lower():
+                RefDs = dicom.read_file(GzipFile(os.path.join(PathDicom,filename)))
+            else:
+                RefDs = dicom.read_file(os.path.join(PathDicom,filename))
+               
             # RefDs.dir has lots of info
             #print(RefDs.dir)
             firsttime=True
