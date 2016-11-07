@@ -1,2 +1,2 @@
 #!/bin/sh
-python score.py
+python score_sc2.py
