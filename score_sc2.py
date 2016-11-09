@@ -20,8 +20,8 @@ if __name__ == '__main__':
     existingsamples = []
     with open(crossWalkPath,'r') as tsvin:
         tsvin = csv.reader(tsvin, delimiter='\t')
-        f = open('/output/out.txt', 'w')
-        f.write("subjectId\tlaterality\tprediction\n")
+        f = open('/output/predictions.tsv', 'w')
+        f.write("subjectId\tlaterality\tconfidence\n")
         first=True
         for row in tsvin:
             if first: # skip the header row
