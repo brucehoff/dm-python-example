@@ -5,6 +5,6 @@ COPY train.py /train.py
 COPY score_sc1.py /score_sc1.py
 COPY score_sc2.py /score_sc2.py
 COPY train.sh /train.sh
-COPY score_sc1.sh /score_sc1.sh
-COPY score_sc2.sh /score_sc2.sh
+COPY sc1_infer.sh /sc1_infer.sh
+COPY sc2_infer.sh /sc2_infer.sh
 COPY preprocess.sh /preprocess.sh
