@@ -11,10 +11,18 @@ import dicom
 import os
 import sys
 from gzip import GzipFile
+import time
+
+def writeProgress(pct):
+    f = open('/progress.txt', 'w')
+    f.write(str(pct)+'\n')
+    f.close()
 
 if __name__ == '__main__':
     #PathDicom = "/trainingData"
     PathDicom = sys.argv[1]
+    i=0
+    n=len(os.listdir(PathDicom))
     for filename in os.listdir(PathDicom):
         if ".dcm" in filename.lower():
             sys.stdout.write("{}: ".format(filename))
@@ -38,5 +46,6 @@ if __name__ == '__main__':
                 print("")
             except:
                 print(" ** failed to process file **")
-            
-            
+        i=i+1
+        writeProgress(float(i)*float(100)/float(n))
+    
